@@ -23,6 +23,7 @@ group :jekyll_plugins do
     gem 'jekyll-terser', :git => "https://github.com/RobertoJBeltran/jekyll-terser.git"
     gem 'jekyll-toc'
     gem 'jekyll-twitter-plugin'
+    gem 'jekyll-last-modified-at'
     gem 'jemoji'
 
     gem 'classifier-reborn'  # used for content categorization during the build

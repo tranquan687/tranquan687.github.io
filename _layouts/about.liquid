@@ -12,6 +12,7 @@ layout: default
       {% endif %}
     </h1>
     <p class="desc">{{ page.subtitle }}</p>
+    <p class="last-updated">Last updated: {{ page.last_modified_at | date: '%B %d, %Y' }}</p>
   </header>
 
   <article>
