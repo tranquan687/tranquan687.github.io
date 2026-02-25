@@ -108,6 +108,8 @@ cv:
       - title: MOE Scholarship (TEEP)
         date: 2023-05
         awarder: Ministry of Education, Taiwan
+        authors:
+          - Tran Dinh Dai Quan
 
     Publications:
       - title: "Saw-monodetr: Shape-aware adaptive weighted transformer for monocular 3d object detection"
