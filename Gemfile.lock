@@ -147,8 +147,6 @@ GEM
     jekyll-cache-bust (0.0.1)
       jekyll (>= 3.6, < 5.0)
     jekyll-email-protect (1.1.0)
-    jekyll-feed (0.17.0)
-      jekyll (>= 3.7, < 5.0)
     jekyll-get-json (1.0.0)
       deep_merge (~> 1.2)
       jekyll (>= 3.0)
@@ -175,8 +173,6 @@ GEM
       citeproc-ruby (>= 2.1.6)
       csl-styles (~> 2.0)
       jekyll (~> 4.0)
-    jekyll-sitemap (1.4.0)
-      jekyll (>= 3.7, < 5.0)
     jekyll-socials (0.0.6)
       jekyll (>= 3.6, < 5.0)
     jekyll-tabs (1.2.1)
@@ -308,7 +304,6 @@ DEPENDENCIES
   jekyll-archives-v2
   jekyll-cache-bust
   jekyll-email-protect
-  jekyll-feed
   jekyll-get-json
   jekyll-imagemagick
   jekyll-jupyter-notebook
@@ -318,7 +313,6 @@ DEPENDENCIES
   jekyll-paginate-v2
   jekyll-regex-replace
   jekyll-scholar
-  jekyll-sitemap
   jekyll-socials
   jekyll-tabs
   jekyll-terser!
