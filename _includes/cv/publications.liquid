@@ -38,7 +38,12 @@
               <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">
                 {% for author in entry.authors %}
                   {% assign author_clean = author | strip %}
-                  {% if author_clean == "Dinh Dai Quan Tran" or author_clean == "Quan Tran Dinh Dai" or author_clean == "Quan T. D. Tran" or author_clean == "Tran, Quan" or author_clean == "Quan Tran" %}
+                  {% if author_clean == 'Dinh Dai Quan Tran'
+                    or author_clean == 'Quan Tran Dinh Dai'
+                    or author_clean == 'Quan T. D. Tran'
+                    or author_clean == 'Tran, Quan'
+                    or author_clean == 'Quan Tran'
+                  %}
                     <strong>{{ author_clean }}</strong>
                   {% else %}
                     {{ author_clean }}
@@ -73,7 +78,12 @@
               <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">
                 {% for author in entry.authors %}
                   {% assign author_clean = author | strip %}
-                  {% if author_clean == "Dinh Dai Quan Tran" or author_clean == "Quan Tran Dinh Dai" or author_clean == "Quan T. D. Tran" or author_clean == "Tran, Quan" or author_clean == "Quan Tran" %}
+                  {% if author_clean == 'Dinh Dai Quan Tran'
+                    or author_clean == 'Quan Tran Dinh Dai'
+                    or author_clean == 'Quan T. D. Tran'
+                    or author_clean == 'Tran, Quan'
+                    or author_clean == 'Quan Tran'
+                  %}
                     <strong>{{ author_clean }}</strong>
                   {% else %}
                     {{ author_clean }}
