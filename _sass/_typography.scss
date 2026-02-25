@@ -134,3 +134,19 @@ blockquote {
     }
   }
 }
+.social-icons {
+  margin-top: 15px;
+  text-align: center; /* Căn giữa mọi thứ bên trong giống như căn lề văn bản */
+
+  a {
+    color: var(--global-text-color); /* Màu theo theme */
+    font-size: 1.6rem; /* Độ lớn của icon */
+    margin-right: 15px; /* Khoảng cách giữa các icon */
+    transition: color 0.3s ease; /* Hiệu ứng mượt khi di chuột */
+
+    &:hover {
+      color: var(--global-theme-color); /* Đổi màu khi di chuột vào */
+      text-decoration: none; /* Bỏ gạch chân của link */
+    }
+  }
+}
