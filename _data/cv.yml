@@ -1,7 +1,7 @@
 cv:
   name: TRAN DINH DAI QUAN
   label: PhD Student in Computer Science
-  email: tranquan687(at)gmail.com
+  email: tranquan687@gmail.com
   location: Ho Chi Minh City, Vietnam
   image: ""
   summary: My research interests broadly lie in Reliable geometric perception for embodied AI at the intersection of 3D Understanding, Vision-Language Models, Trustworthy AI, and Embodied AI.
@@ -26,7 +26,7 @@ cv:
         area: Computer Science
         studyType: PhD
         start_date: 2026
-        end_date: Present
+        end_date: present
         highlights:
           - Incoming PhD student supervised by Prof. Winston Hsu.
 
@@ -53,7 +53,7 @@ cv:
         position: Research Assistant
         location: Chiayi, Taiwan
         start_date: 2024
-        end_date: Present
+        end_date: present
         summary: Working on Monocular 3D Object Detection and Voice Deepfake Detection.
         highlights:
           - Propose a Shape-aware Foreground Depth Map and Depth Adaptive Weight for MonoDETR.
@@ -90,14 +90,20 @@ cv:
       - title: NSTC Grant for Domestic Graduate Students
         date: 2025-09
         awarder: National Science and Technology Council, Taiwan
+        authors:
+          - Tran Dinh Dai Quan
 
       - title: Best Presentation Award
         date: 2025-06
         awarder: APWEI 2025
+        authors:
+          - Tran Dinh Dai Quan
 
       - title: NSTC Scholarship (International Internship Pilot Program)
         date: 2023-11
         awarder: NSTC, Taiwan
+        authors:
+          - Tran Dinh Dai Quan
 
       - title: MOE Scholarship (TEEP)
         date: 2023-05
