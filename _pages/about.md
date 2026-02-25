@@ -20,9 +20,8 @@ profile:
       <a href="https://scholar.google.com/citations?hl=en&user=NfwzqKoAAAAJ" title="Google Scholar" target="_blank">
         <i class="ai ai-google-scholar"></i>
       </a>
-
       <!-- LinkedIn -->
-      <a href="LINK_LINKEDIN_CỦA_BẠN" title="LinkedIn" target="_blank">
+      <a href="https://www.linkedin.com/in/quan-tran-dinh-dai-62a724217/" title="LinkedIn" target="_blank">
         <i class="fab fa-linkedin"></i>
       </a>
     </div>
