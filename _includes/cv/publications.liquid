@@ -1,5 +1,5 @@
 {% comment %}
-  Unified publications entry renderer for both formats
+  Unified publications entry renderer for both formats with bold author support
 {% endcomment %}
 
 <ul class="card-text font-weight-light list-group list-group-flush">
@@ -33,6 +33,21 @@
               <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.title }}</h6>
             {% endif %}
 
+            <!-- Phần hiển thị Authors -->
+            {% if entry.authors %}
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">
+                {% for author in entry.authors %}
+                  {% assign author_clean = author | strip %}
+                  {% if author_clean == "Dinh Dai Quan Tran" or author_clean == "Quan Tran Dinh Dai" or author_clean == "Quan T. D. Tran" or author_clean == "Tran, Quan" or author_clean == "Quan Tran" %}
+                    <strong>{{ author_clean }}</strong>
+                  {% else %}
+                    {{ author_clean }}
+                  {% endif %}
+                  {% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              </h6>
+            {% endif %}
+
             {% if entry.publisher %}
               <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">
                 <em>{{ entry.publisher }}</em>
@@ -51,6 +66,21 @@
               </h6>
             {% elsif entry.title %}
               <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.title }}</h6>
+            {% endif %}
+
+            <!-- Phần hiển thị Authors (Trường hợp không có ngày) -->
+            {% if entry.authors %}
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">
+                {% for author in entry.authors %}
+                  {% assign author_clean = author | strip %}
+                  {% if author_clean == "Dinh Dai Quan Tran" or author_clean == "Quan Tran Dinh Dai" or author_clean == "Quan T. D. Tran" or author_clean == "Tran, Quan" or author_clean == "Quan Tran" %}
+                    <strong>{{ author_clean }}</strong>
+                  {% else %}
+                    {{ author_clean }}
+                  {% endif %}
+                  {% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              </h6>
             {% endif %}
 
             {% if entry.publisher %}

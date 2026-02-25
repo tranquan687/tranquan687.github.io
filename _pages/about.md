@@ -20,6 +20,12 @@ profile:
       <a href="https://scholar.google.com/citations?hl=en&user=NfwzqKoAAAAJ" title="Google Scholar" target="_blank">
         <i class="ai ai-google-scholar"></i>
       </a>
+      
+      <!-- ORCID -->
+      <a href="https://orcid.org/0009-0004-9174-0289" title="ORCID" target="_blank">
+        <i class="ai ai-orcid"></i>
+      </a>
+
       <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/quan-tran-dinh-dai-62a724217/" title="LinkedIn" target="_blank">
         <i class="fab fa-linkedin"></i>

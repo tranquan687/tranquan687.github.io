@@ -4,15 +4,17 @@ cv:
   email: tranquan687@gmail.com
   location: Ho Chi Minh City, Vietnam
   image: ""
-  summary: My research interests broadly lie in Reliable geometric perception for embodied AI at the intersection of 3D Understanding, Vision-Language Models, Trustworthy AI, and Embodied AI.
+  summary: My research interests broadly lie in Reliable geometric perception 
+    for embodied AI at the intersection of 3D Understanding, Vision-Language 
+    Models, Trustworthy AI, and Embodied AI.
 
   social_networks:
-    - network: GitHub
-      username: tranquan687
-    - network: LinkedIn
-      username: quan-tran-dinh-dai-62a724217
-    - network: Google Scholar
-      username: NfwzqKoAAAAJ
+  - network: GitHub
+    username: tranquan687
+  - network: LinkedIn
+    username: quan-tran-dinh-dai-62a724217
+  - network: Google Scholar
+    username: NfwzqKoAAAAJ
 
   address:
     city: Ho Chi Minh City, VN
@@ -20,146 +22,186 @@ cv:
 
   sections:
     Education:
-      - institution: National Taiwan University (NTU)
-        location: Taipei, Taiwan
-        url: https://www.ntu.edu.tw/english/
-        area: Computer Science
-        studyType: PhD
-        start_date: "2026"
-        end_date: present
-        highlights:
-          - Incoming PhD student supervised by Prof. Winston Hsu.
+    - institution: National Taiwan University (NTU)
+      location: Taipei, Taiwan
+      url: https://www.ntu.edu.tw/english/
+      area: Computer Science
+      studyType: PhD
+      start_date: "2026"
+      end_date: present
+      highlights:
+      - Incoming PhD student supervised by Prof. Winston Hsu.
 
-      - institution: National Chung Cheng University
-        location: Chiayi, Taiwan
-        url: https://www.ccu.edu.tw/
-        area: Advanced Manufacturing Systems
-        studyType: Master of Science
-        start_date: "2024"
-        end_date: "2026"
-        score: "3.93/4.0"
-        highlights:
-          - "Advisor: Prof. Van-Linh Nguyen"
+    - institution: National Chung Cheng University
+      location: Chiayi, Taiwan
+      url: https://www.ccu.edu.tw/
+      area: Advanced Manufacturing Systems
+      studyType: Master of Science
+      start_date: "2024"
+      end_date: "2026"
+      score: "3.93/4.0"
+      highlights:
+      - "Advisor: Prof. Van-Linh Nguyen"
 
-      - institution: Ho Chi Minh City University of Education
-        location: Ho Chi Minh City, Vietnam
-        area: Mathematics Teacher Education
-        studyType: Bachelor
-        start_date: "2018"
-        end_date: "2022"
+    - institution: Ho Chi Minh City University of Education
+      location: Ho Chi Minh City, Vietnam
+      area: Mathematics Teacher Education
+      studyType: Bachelor
+      start_date: "2018"
+      end_date: "2022"
 
     Experience:
-      - company: National Chung Cheng University
-        position: Research Assistant
-        location: Chiayi, Taiwan
-        start_date: "2024"
-        end_date: present
-        summary: Working on Monocular 3D Object Detection and Voice Deepfake Detection.
-        highlights:
-          - Propose a Shape-aware Foreground Depth Map and Depth Adaptive Weight for MonoDETR.
-          - Authored "Saw-MonoDETR", accepted to ICIP 2025.
-          - "Co-authored VDD: Voice Deepfake Detection, accepted to Signal, Image and Video Processing."
+    - company: National Chung Cheng University
+      position: Research Assistant
+      location: Chiayi, Taiwan
+      start_date: "2024"
+      end_date: present
+      summary: Working on Monocular 3D Object Detection and Voice Deepfake 
+        Detection.
+      highlights:
+      - Propose a Shape-aware Foreground Depth Map and Depth Adaptive Weight for
+        MonoDETR.
+      - Authored "Saw-MonoDETR", accepted to ICIP 2025.
+      - "Co-authored VDD: Voice Deepfake Detection, accepted to Signal, Image and
+        Video Processing."
 
-      - company: Yuan-Ze University
-        position: Research Intern
-        location: Taoyuan, Taiwan
-        start_date: "2023-11"
-        end_date: "2023-12"
-        highlights:
-          - Explore the challenges of monocular 3D object detection and incremental learning.
+    - company: Yuan-Ze University
+      position: Research Intern
+      location: Taoyuan, Taiwan
+      start_date: "2023-11"
+      end_date: "2023-12"
+      highlights:
+      - Explore the challenges of monocular 3D object detection and incremental 
+        learning.
 
-      - company: National Chung Cheng University
-        position: Research Intern (TEEP)
-        location: Chiayi, Taiwan
-        start_date: "2023-05"
-        end_date: "2023-08"
-        highlights:
-          - Project Path Planning for Unmanned Aerial Vehicles (UAVs).
-          - Co-authored "DragFly", accepted to VTC2024-Spring.
+    - company: National Chung Cheng University
+      position: Research Intern (TEEP)
+      location: Chiayi, Taiwan
+      start_date: "2023-05"
+      end_date: "2023-08"
+      highlights:
+      - Project Path Planning for Unmanned Aerial Vehicles (UAVs).
+      - Co-authored "DragFly", accepted to VTC2024-Spring.
 
-      - company: GMO-Z.com RUNSYSTEM JSC
-        position: AI Research Intern
-        location: Ho Chi Minh City, Vietnam
-        start_date: "2023-05"
-        end_date: "2023-08"
-        highlights:
-          - Developed Real-Time Face Smoothing using MediaPipe Face Mesh.
-          - Customized YOLOv5 for checkbox detection in OCR, achieving F1 score > 90%.
+    - company: GMO-Z.com RUNSYSTEM JSC
+      position: AI Research Intern
+      location: Ho Chi Minh City, Vietnam
+      start_date: "2023-05"
+      end_date: "2023-08"
+      highlights:
+      - Developed Real-Time Face Smoothing using MediaPipe Face Mesh.
+      - Customized YOLOv5 for checkbox detection in OCR, achieving F1 score > 
+        90%.
 
     Awards:
-      - title: NSTC Grant for Domestic Graduate Students
-        date: "2025-09"
-        awarder: National Science and Technology Council, Taiwan
-        authors:
-          - Tran Dinh Dai Quan
+    - title: NSTC Grant for Domestic Graduate Students
+      date: "2025-09"
+      awarder: National Science and Technology Council, Taiwan
+      authors:
+      - Tran Dinh Dai Quan
 
-      - title: Best Presentation Award
-        date: "2025-06"
-        awarder: APWEI 2025
-        authors:
-          - Tran Dinh Dai Quan
+    - title: Best Presentation Award
+      date: "2025-06"
+      awarder: APWEI 2025
+      authors:
+      - Tran Dinh Dai Quan
 
-      - title: NSTC Scholarship (International Internship Pilot Program)
-        date: "2023-11"
-        awarder: NSTC, Taiwan
-        authors:
-          - Tran Dinh Dai Quan
+    - title: NSTC Scholarship (International Internship Pilot Program)
+      date: "2023-11"
+      awarder: NSTC, Taiwan
+      authors:
+      - Tran Dinh Dai Quan
 
-      - title: MOE Scholarship (TEEP)
-        date: "2023-05"
-        awarder: Ministry of Education, Taiwan
-        authors:
-          - Tran Dinh Dai Quan
+    - title: MOE Scholarship (TEEP)
+      date: "2023-05"
+      awarder: Ministry of Education, Taiwan
+      authors:
+      - Tran Dinh Dai Quan
 
     Publications:
-      - title: "Saw-monodetr: Shape-aware adaptive weighted transformer for monocular 3d object detection"
-        authors:
-          - D. D. Q. Tran
-          - T.-H. Nguyen
-          - V. Q. Dinh
-          - R.-H. Hwang
-          - V.-L. Nguyen
-        publisher: ICIP
-        releaseDate: "2025"
-        summary: Accepted to 2025 IEEE International Conference on Image Processing (ICIP).
-
-      - title: "Igl-dt: Iterative global-local feature learning with dual-teacher semantic segmentation framework"
-        authors:
-          - D. D. Q. Tran
-          - H.-T. Nguyen
-          - T.-H. Nguyen
-          - G.-V. To
-          - T.-H. Nguyen
-          - Q. Nguyen
-        publisher: CVPR Workshop
-        releaseDate: "2025"
-        summary: Accepted to CVPR 2025 - Precognition Workshop.
-
+    - title: 'Saw-Monodetr: Shape-Aware Adaptive Weighted Transformer for Monocular
+        3d Object Detection'
+      authors:
+      - Dinh Dai Quan Tran
+      - Thanh-Huy Nguyen
+      - Vinh Quang Dinh
+      - Ren-Hung Hwang
+      - Van-Linh Nguyen
+      publisher: 2025 IEEE International Conference on Image Processing (ICIP)
+      releaseDate: '2025'
+      summary: 'Source: ORCID'
+    - title: 'IGL-DT: Iterative Global-Local Feature Learning with Dual-Teacher Semantic
+        Segmentation Framework Under Limited Annotation Scheme'
+      authors:
+      - Dinh Dai Quan Tran
+      - Hoang-Thien Nguyen
+      - Thanh-Huy Nguyen
+      - Gia-Van To
+      - Tien-Huy Nguyen
+      - Quan Nguyen
+      publisher: 2025 IEEE/CVF Conference on Computer Vision and Pattern 
+        Recognition Workshops (CVPRW)
+      releaseDate: '2025'
+      summary: 'Source: ORCID'
+    - title: 'Vdd: voice deepfake detection with three-channel acoustic representations
+        and advanced split-attention networks'
+      authors:
+      - Khanh-Duy Cao-Phan
+      - Quan Tran Dinh Dai
+      - Van-Linh Nguyen
+      publisher: Signal, Image and Video Processing
+      releaseDate: '2025'
+      summary: 'Source: ORCID'
+    - title: 'DragFly: Joint Threat Object Detection And UAV Trajectory Planning in
+        Hostile Environments'
+      authors:
+      - Akkapatch Thouchamongkol
+      - Hong-Yi Chen
+      - Yan-Hao Wang
+      - Quan Tran Dinh Dai
+      - Van-Linh Nguyen
+      publisher: 2024 IEEE 99th Vehicular Technology Conference (VTC2024-Spring)
+      releaseDate: '2024'
+      summary: 'Source: ORCID'
+    - title: In-context Cross-Density Adaptation on Noisy Mammogram 
+        Abnormalities Detection
+      authors:
+      - Huy T. Nguyen
+      - Thinh B. Lam
+      - Quan T. D. Tran
+      - Minh T. Nguyen
+      - Dat T. Chung
+      - Vinh Q. Dinh
+      publisher: 2023 IEEE Statistical Signal Processing Workshop (SSP)
+      releaseDate: '2023'
+      summary: 'Source: ORCID'
     Skills:
-      - name: Research
-        level: Master
-        icon: fa-solid fa-microscope
-        keywords: "3D Understanding, Vision-Language Models, Embodied AI, Trustworthy AI"
-      - name: Tools
-        level: Master
-        icon: fa-solid fa-code
-        keywords: "Python, PyTorch, YOLO, MediaPipe, LaTeX"
+    - name: Research
+      level: Master
+      icon: fa-solid fa-microscope
+      keywords: "3D Understanding, Vision-Language Models, Embodied AI, Trustworthy
+        AI"
+    - name: Tools
+      level: Master
+      icon: fa-solid fa-code
+      keywords: "Python, PyTorch, YOLO, MediaPipe, LaTeX"
 
     Languages:
-      - name: Vietnamese
-        summary: "Native"
-      - name: English
-        summary: "IELTS 6.5"
+    - name: Vietnamese
+      summary: "Native"
+    - name: English
+      summary: "IELTS 6.5"
 
     References:
-      - name: "Prof. Van-Linh Nguyen (PhD)"
-        icon: fa-solid fa-user-tie
-        reference: "Assistant Professor, National Chung Cheng University. Email: nvlinh(at)cs.ccu.edu.tw"
+    - name: "Prof. Van-Linh Nguyen (PhD)"
+      icon: fa-solid fa-user-tie
+      reference: "Assistant Professor, National Chung Cheng University. Email: nvlinh(at)cs.ccu.edu.tw"
 
-      - name: "Prof. Ren-Hung Hwang (PhD)"
-        icon: fa-solid fa-user-tie
-        reference: "Professor and Dean, National Yang Ming Chiao Tung University. Email: rhhwang(at)nycu.edu.tw"
+    - name: "Prof. Ren-Hung Hwang (PhD)"
+      icon: fa-solid fa-user-tie
+      reference: "Professor and Dean, National Yang Ming Chiao Tung University. Email:
+        rhhwang(at)nycu.edu.tw"
 
-      - name: "Dr. Dinh Quang Vinh (PhD)"
-        icon: fa-solid fa-user-tie
-        reference: "Director of AI VIETNAM Lab. Email: vinh.dinhquang(at)aivietnam.edu.vn"
+    - name: "Dr. Dinh Quang Vinh (PhD)"
+      icon: fa-solid fa-user-tie
+      reference: "Director of AI VIETNAM Lab. Email: vinh.dinhquang(at)aivietnam.edu.vn"

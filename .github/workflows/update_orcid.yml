@@ -1,0 +1,37 @@
+name: Update Publications from ORCID
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+jobs:
+  update-cv:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests ruamel.yaml
+
+      - name: Run update script
+        run: python update_publications.py
+
+      - name: Commit and push if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🤖 Auto-update publications from ORCID [skip ci]"
+          file_pattern: "_data/cv.yml _bibliography/papers.bib"
+          commit_user_name: "GitHub Action Bot"
+          commit_user_email: "actions@github.com"
