@@ -61,6 +61,25 @@ jobs:
           fi
           set -e
 
+      - name: Run paper sync script
+        id: run_paper_sync
+        shell: bash
+        run: |
+          set +e
+          echo "🚀 Running paper sync script..."
+          start_time=$(date)
+          timeout 90 python sync_papers.py
+          status=$?
+          end_time=$(date)
+          if [ $status -eq 0 ]; then
+            echo "✅ Paper sync succeeded (started at $start_time, ended at $end_time)."
+            echo "✅ Paper sync succeeded." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Paper sync script failed with exit code $status (started at $start_time, ended at $end_time)."
+            echo "❌ Paper sync script failed with exit code $status." >> $GITHUB_STEP_SUMMARY
+          fi
+          set -e
+
       - name: Save new citations.yml hash
         id: after
         run: |
@@ -94,8 +113,9 @@ jobs:
       - name: Commit and push if changed
         run: |
           git add _data/citations.yml
+          git add _bibliography/papers.bib
           git diff --staged --quiet || (
             echo "📤 Committing and pushing changes..."
-            git commit -m "Update Google Scholar citations"
+            git commit -m "Update Google Scholar citations and sync papers"
             git push
           )
