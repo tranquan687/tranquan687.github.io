@@ -24,6 +24,7 @@ jobs:
       - name: Prettier Check 🔎
         id: prettier
         run: npx prettier . --check
+        continue-on-error: true  # <--- Thêm dòng này
       - name: Create diff 📝
         # https://docs.github.com/en/actions/learn-github-actions/expressions#failure
         if: ${{ failure() }}

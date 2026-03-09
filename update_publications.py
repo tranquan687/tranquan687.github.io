@@ -107,11 +107,36 @@ def fetch_orcid_data(orcid_id):
         return [], []
 
 def save_files(new_pubs, bib_entries):
+    # --- XỬ LÝ FILE BIBTEX ---
     if bib_entries:
         os.makedirs(os.path.dirname(BIB_FILE), exist_ok=True)
-        with open(BIB_FILE, 'w', encoding='utf-8') as f:
-            f.write("\n\n".join(bib_entries))
-        print(f"📝 Đã cập nhật file BibTeX: {BIB_FILE}")
+        existing_keys = set()
+        
+        # Đọc các Key đã tồn tại trong file .bib cũ
+        if os.path.exists(BIB_FILE):
+            with open(BIB_FILE, 'r', encoding='utf-8') as f:
+                content = f.read()
+                # Regex tìm các key sau dấu @type{KEY,
+                existing_keys = set(re.findall(r'@\w+\{([^,]+),', content))
+
+        entries_to_add = []
+        for entry in bib_entries:
+            # Lấy key của entry mới để so sánh
+            match = re.search(r'@\w+\{([^,]+),', entry)
+            if match:
+                entry_key = match.group(1)
+                if entry_key not in existing_keys:
+                    entries_to_add.append(entry)
+                    existing_keys.add(entry_key) # Tránh trùng ngay trong list mới
+
+        if entries_to_add:
+            mode = 'a' if os.path.exists(BIB_FILE) else 'w'
+            with open(BIB_FILE, mode, encoding='utf-8') as f:
+                if mode == 'a': f.write("\n\n")
+                f.write("\n\n".join(entries_to_add))
+            print(f"📝 Đã thêm {len(entries_to_add)} bài báo mới vào file BibTeX.")
+        else:
+            print("ℹ️ Không có bài báo mới nào để thêm vào BibTeX.")
 
     if new_pubs:
         yaml = YAML()
