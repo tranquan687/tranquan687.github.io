@@ -119,6 +119,21 @@ cv:
       - Tran Dinh Dai Quan
 
     Publications:
+    - title: COVID-19 Pulmonary Infiltrate Manifestation Segmentation Leveraging
+        Auxiliary Tasks
+      authors:
+      - Quan Dinh Dai Tran
+      - Toan Thai Ngoc Truong
+      - Ha Hieu Pham
+      - Minh Toan Dinh
+      - Tran Quoc Khanh Le
+      - Tran Quang Khai Bui
+      - Thanh-Minh Nguyen
+      - Quan Nguyen
+      - Minh Huu Nhat Le
+      publisher: Lecture Notes in Networks and Systems
+      releaseDate: '2026'
+      summary: 'Source: ORCID'
     - title: 'Saw-Monodetr: Shape-Aware Adaptive Weighted Transformer for Monocular
         3d Object Detection'
       authors:
