@@ -155,6 +155,11 @@ newsletter:
 collections:
   books:
     output: true
+  blog:
+    defaults:
+      layout: post
+      permalink: /blog/:slug/
+    output: true
   news:
     defaults:
       layout: post

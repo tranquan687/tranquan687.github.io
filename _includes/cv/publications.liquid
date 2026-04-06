@@ -6,6 +6,21 @@
   {% for entry in entries %}
     <li class="list-group-item">
       <div class="row">
+        {% assign citation_count = 0 %}
+        {% if site.data.citations and site.data.citations.papers and entry.title %}
+          {% assign entry_title_normalized = entry.title | downcase | strip | remove: ':' | remove: ',' | remove: '.' | remove: '-' | remove: "'" | remove: '"' %}
+          {% for paper_item in site.data.citations.papers %}
+            {% assign paper_data = paper_item[1] %}
+            {% if paper_data.title %}
+              {% assign paper_title_normalized = paper_data.title | downcase | strip | remove: ':' | remove: ',' | remove: '.' | remove: '-' | remove: "'" | remove: '"' %}
+              {% if paper_title_normalized == entry_title_normalized %}
+                {% assign citation_count = paper_data.citations | default: 0 %}
+                {% break %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
         {% capture pub_date %}
           {% if entry.releaseDate %}{{ entry.releaseDate }}{% elsif entry.date %}{{ entry.date }}{% endif %}
         {% endcapture %}
@@ -62,6 +77,8 @@
             {% if entry.summary %}
               <p class="ml-1 ml-md-4">{{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
             {% endif %}
+
+            <p class="ml-1 ml-md-4"><strong>Citations:</strong> {{ citation_count }}</p>
           </div>
         {% else %}
           <div class="col-xs-12 col-sm-12 col-md-12">
@@ -83,6 +100,8 @@
                     or author_clean == 'Quan T. D. Tran'
                     or author_clean == 'Tran, Quan'
                     or author_clean == 'Quan Tran'
+                    or author_clean == 'Quan Dinh Dai Tran'
+
                   %}
                     <strong>{{ author_clean }}</strong>
                   {% else %}
@@ -102,6 +121,8 @@
             {% if entry.summary %}
               <p class="ml-1 ml-md-4">{{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
             {% endif %}
+
+            <p class="ml-1 ml-md-4"><strong>Citations:</strong> {{ citation_count }}</p>
           </div>
         {% endif %}
       </div>

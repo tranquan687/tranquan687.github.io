@@ -1,4 +1,19 @@
 <div class="row">
+  {% assign citation_count = 0 %}
+  {% if site.data.citations and site.data.citations.papers and entry.title %}
+    {% assign entry_title_normalized = entry.title | downcase | strip | remove: ':' | remove: ',' | remove: '.' | remove: '-' | remove: "'" | remove: '"' %}
+    {% for paper_item in site.data.citations.papers %}
+      {% assign paper_data = paper_item[1] %}
+      {% if paper_data.title %}
+        {% assign paper_title_normalized = paper_data.title | downcase | strip | remove: ':' | remove: ',' | remove: '.' | remove: '-' | remove: "'" | remove: '"' %}
+        {% if paper_title_normalized == entry_title_normalized %}
+          {% assign citation_count = paper_data.citations | default: 0 %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
   <!-- Cột hiển thị Năm (Badge màu đỏ) -->
   <div class="col-xs-2 col-sm-2 col-md-2 text-center">
     <table class="table-cv">
@@ -36,6 +51,7 @@
               or author_name contains 'Quan Tran'
               or author_name_rev contains 'Tran, Dinh Dai Quan'
               or author_name_rev contains 'Tran, Quan'
+              or author_name_rev contains 'Tran, Quan Dinh Dai'
         %}
           <strong>{{ author.last }}, {{ author.first }}</strong>
         {% else %}
@@ -62,5 +78,7 @@
     {% if entry.note %}
       <p class="ml-1 ml-md-4">{{ entry.note }}</p>
     {% endif %}
+
+    <p class="ml-1 ml-md-4"><strong>Citations:</strong> {{ citation_count }}</p>
   </div>
 </div>

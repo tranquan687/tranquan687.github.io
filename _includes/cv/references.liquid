@@ -10,6 +10,9 @@
       {% endif %}
       <strong>{{ entry.name }}</strong>
       <p>{{ entry.reference | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+      {% if entry.email %}
+        <p>Email: <a href="mailto:{{ entry.email }}">{{ entry.email | replace: '@', '(at)' }}</a></p>
+      {% endif %}
     </li>
   {% endfor %}
 </ul>

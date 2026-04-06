@@ -1,7 +1,7 @@
 cv:
   name: TRAN DINH DAI QUAN
   label: PhD Student in Computer Science
-  email: tranquan687@gmail.com
+  email: tranquan687(at)gmail.com
   location: Ho Chi Minh City, Vietnam
   image: ""
   summary: My research interests broadly lie in Reliable geometric perception 
@@ -17,8 +17,8 @@ cv:
     username: NfwzqKoAAAAJ
 
   address:
-    city: Ho Chi Minh City, VN
-    countryCode: VN
+    region: Vietnam
+    # countryCode: VN
 
   sections:
     Education:
@@ -210,13 +210,15 @@ cv:
     References:
     - name: "Prof. Van-Linh Nguyen (PhD)"
       icon: fa-solid fa-user-tie
-      reference: "Assistant Professor, National Chung Cheng University. Email: nvlinh(at)cs.ccu.edu.tw"
+      reference: "Assistant Professor, National Chung Cheng University."
+      email: "nvlinh@cs.ccu.edu.tw"
 
     - name: "Prof. Ren-Hung Hwang (PhD)"
       icon: fa-solid fa-user-tie
-      reference: "Professor and Dean, National Yang Ming Chiao Tung University. Email:
-        rhhwang(at)nycu.edu.tw"
+      reference: "Professor and Dean, National Yang Ming Chiao Tung University."
+      email: "rhhwang@nycu.edu.tw"
 
     - name: "Dr. Dinh Quang Vinh (PhD)"
       icon: fa-solid fa-user-tie
-      reference: "Director of AI VIETNAM Lab. Email: vinh.dinhquang(at)aivietnam.edu.vn"
+      reference: "Director of AI VIETNAM Lab."
+      email: "vinh.dinhquang@aivietnam.edu.vn"
