@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-19'
+  last_updated: '2026-07-22'
 papers:
   NfwzqKoAAAAJ:2osOgNQ5qMEC:
     citations: 3
@@ -14,7 +14,7 @@ papers:
     title: COVID-19 Pulmonary Infiltrate Manifestation Segmentation Leveraging Auxiliary Tasks
     year: '2025'
   NfwzqKoAAAAJ:UeHWp8X0CEIC:
-    citations: 5
+    citations: 6
     title: 'Vdd: voice deepfake detection with three-channel acoustic representations and advanced split-attention networks'
     year: '2025'
   NfwzqKoAAAAJ:qjMakFHDy7sC:
