@@ -50,39 +50,24 @@ jobs:
         id: run_citation_update
         shell: bash
         run: |
-          set +e
           echo "🚀 Running citation update script (single attempt)..."
           start_time=$(date)
-          timeout 90 python bin/update_scholar_citations.py
-          status=$?
+          timeout --signal=TERM --kill-after=30s 300 python bin/update_scholar_citations.py
           end_time=$(date)
-          if [ $status -eq 0 ]; then
-            echo "✅ Citation update succeeded (started at $start_time, ended at $end_time)."
-            echo "✅ Citation update succeeded." >> $GITHUB_STEP_SUMMARY
-          else
-            echo "❌ Citation update script failed with exit code $status (started at $start_time, ended at $end_time)."
-            echo "❌ Citation update script failed with exit code $status." >> $GITHUB_STEP_SUMMARY
-          fi
-          set -e
+          echo "✅ Citation update succeeded (started at $start_time, ended at $end_time)."
+          echo "✅ Citation update succeeded." >> $GITHUB_STEP_SUMMARY
 
       - name: Run paper sync script
         id: run_paper_sync
+        continue-on-error: true
         shell: bash
         run: |
-          set +e
           echo "🚀 Running paper sync script..."
           start_time=$(date)
-          timeout 90 python sync_papers.py
-          status=$?
+          timeout --signal=TERM --kill-after=30s 300 python sync_papers.py
           end_time=$(date)
-          if [ $status -eq 0 ]; then
-            echo "✅ Paper sync succeeded (started at $start_time, ended at $end_time)."
-            echo "✅ Paper sync succeeded." >> $GITHUB_STEP_SUMMARY
-          else
-            echo "❌ Paper sync script failed with exit code $status (started at $start_time, ended at $end_time)."
-            echo "❌ Paper sync script failed with exit code $status." >> $GITHUB_STEP_SUMMARY
-          fi
-          set -e
+          echo "✅ Paper sync succeeded (started at $start_time, ended at $end_time)."
+          echo "✅ Paper sync succeeded." >> $GITHUB_STEP_SUMMARY
 
       - name: Save new citations.yml hash
         id: after
@@ -130,3 +115,10 @@ jobs:
           git commit -m "Update Google Scholar citations and sync papers"
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
           git push origin HEAD:${{ github.ref_name }}
+
+      - name: Report paper sync failure
+        if: steps.run_paper_sync.outcome == 'failure'
+        run: |
+          echo "❌ Paper sync failed. Citation changes, if any, were pushed, but the workflow failed."
+          echo "❌ Paper sync failed. Citation changes, if any, were pushed, but the workflow failed." >> $GITHUB_STEP_SUMMARY
+          exit 1

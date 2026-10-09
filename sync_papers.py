@@ -78,6 +78,8 @@ def sync_papers():
     """Sync papers from Google Scholar to bib file."""
     print(f"Fetching publications for Google Scholar ID: {SCHOLAR_USER_ID}")
 
+    scholarly.set_timeout(15)
+    scholarly.set_retries(2)
     existing_titles = get_existing_titles()
     print(f"Found {len(existing_titles)} existing papers in {BIB_FILE}")
 
