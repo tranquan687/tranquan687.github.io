@@ -4,9 +4,8 @@ import os
 import sys
 import yaml
 from datetime import datetime
-from scholarly import scholarly
 
-from scholar_proxy import configure_scholar_proxy
+from scholar_source import fetch_publications
 
 
 def load_scholar_user_id() -> str:
@@ -36,8 +35,6 @@ def load_scholar_user_id() -> str:
 
 SCHOLAR_USER_ID: str = load_scholar_user_id()
 OUTPUT_FILE: str = "_data/citations.yml"
-REQUEST_TIMEOUT_SECONDS = 15
-MAX_REQUEST_RETRIES = 1
 
 
 def get_scholar_citations() -> None:
@@ -67,54 +64,34 @@ def get_scholar_citations() -> None:
 
     citation_data = {"metadata": {"last_updated": today}, "papers": {}}
 
-    # Keep individual Scholar requests bounded so the workflow timeout remains
-    # a last-resort guard rather than the normal way to stop a blocked request.
-    scholarly.set_timeout(REQUEST_TIMEOUT_SECONDS)
-    scholarly.set_retries(MAX_REQUEST_RETRIES)
-    configure_scholar_proxy()
     try:
-        author = scholarly.search_author_id(SCHOLAR_USER_ID)
-        author_data = scholarly.fill(author)
+        publications = fetch_publications(SCHOLAR_USER_ID)
     except Exception as e:
         print(
-            f"Error fetching author data from Google Scholar for user ID '{SCHOLAR_USER_ID}': {e}. Please check your internet connection and Scholar user ID."
+            f"Error fetching publications from Google Scholar for user ID '{SCHOLAR_USER_ID}': {e}. "
+            "Google Scholar blocks CI runners; set the SERPAPI_API_KEY secret to fetch through SerpAPI."
         )
         sys.exit(1)
 
-    if not author_data:
-        print(
-            f"Could not fetch author data for user ID '{SCHOLAR_USER_ID}'. Please verify the Scholar user ID and try again."
-        )
+    if not publications:
+        print(f"No publications found for user ID '{SCHOLAR_USER_ID}'.")
         sys.exit(1)
 
-    if "publications" not in author_data:
-        print(f"No publications found in author data for user ID '{SCHOLAR_USER_ID}'.")
-        sys.exit(1)
-
-    for pub in author_data["publications"]:
-        try:
-            pub_id = pub.get("pub_id") or pub.get("author_pub_id")
-            if not pub_id:
-                print(
-                    f"Warning: No ID found for publication: {pub.get('bib', {}).get('title', 'Unknown')}. This publication will be skipped."
-                )
-                continue
-
-            title = pub.get("bib", {}).get("title", "Unknown Title")
-            year = pub.get("bib", {}).get("pub_year", "Unknown Year")
-            citations = pub.get("num_citations", 0)
-
-            print(f"Found: {title} ({year}) - Citations: {citations}")
-
-            citation_data["papers"][pub_id] = {
-                "title": title,
-                "year": year,
-                "citations": citations,
-            }
-        except Exception as e:
+    for pub in publications:
+        pub_id = pub["pub_id"]
+        if not pub_id:
             print(
-                f"Error processing publication '{pub.get('bib', {}).get('title', 'Unknown')}': {e}. This publication will be skipped."
+                f"Warning: No ID found for publication: {pub['title']}. This publication will be skipped."
             )
+            continue
+
+        print(f"Found: {pub['title']} ({pub['year']}) - Citations: {pub['citations']}")
+
+        citation_data["papers"][pub_id] = {
+            "title": pub["title"],
+            "year": pub["year"],
+            "citations": pub["citations"],
+        }
 
     # Compare new data with existing data
     if existing_data and existing_data.get("papers") == citation_data["papers"]:

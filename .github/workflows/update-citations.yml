@@ -10,6 +10,13 @@ on:
 permissions:
   contents: write
 
+# Google Scholar blocks GitHub Actions IPs, so fetch through SerpAPI
+# (add the SERPAPI_API_KEY repository secret) or a configured proxy.
+env:
+  SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+  SCRAPER_API_KEY: ${{ secrets.SCRAPER_API_KEY }}
+  SCHOLAR_PROXY: ${{ secrets.SCHOLAR_PROXY }}
+
 jobs:
   update-citations:
     runs-on: ubuntu-latest
