@@ -6,6 +6,8 @@ import yaml
 from datetime import datetime
 from scholarly import scholarly
 
+from scholar_proxy import configure_scholar_proxy
+
 
 def load_scholar_user_id() -> str:
     """Load the Google Scholar user ID from the configuration file."""
@@ -69,6 +71,7 @@ def get_scholar_citations() -> None:
     # a last-resort guard rather than the normal way to stop a blocked request.
     scholarly.set_timeout(REQUEST_TIMEOUT_SECONDS)
     scholarly.set_retries(MAX_REQUEST_RETRIES)
+    configure_scholar_proxy()
     try:
         author = scholarly.search_author_id(SCHOLAR_USER_ID)
         author_data = scholarly.fill(author)
