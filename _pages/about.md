@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: MSc student in AIM-HI, National Chung Cheng Univeristy (CCU), Taiwan
+subtitle: PhD student in CSIE at National Taiwan , Taiwan
 # subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 pronounce: '"Kwun" or "Kwan"' # the pronounciation of your name, which will be displayed on hover
 
@@ -49,8 +49,8 @@ announcements:
 
 "I am a lifelong learner on a journey to discover my true purpose."
 
-Currently, I am exploring the world of AI, seeking ways to turn my curiosity into meaningful contributions. I believe that the path to finding one's mission is just as important as the destination itself.
+Currently, I am focusing on Embodied AI and Robotic Manipulation. My work centers on building robust and generalizable dextrous hand manipulation systems using Vision-Language-Action (VLA) foundation models. I am passionate about scaling robot learning to enable fine-grained, dexterous physical interactions across unstructured real-world environments.
 
-🔍 **Interests:** Deep learning, Computer Vision,...
+🔍 **Interests:** Embodied AI • Dexterous Manipulation VLA Models • Robot Learning • Generalization & Robustness • 3D Spatial Perception,...
 
 _\*Open to research discussions or collaborations._{: style="color: red"}
