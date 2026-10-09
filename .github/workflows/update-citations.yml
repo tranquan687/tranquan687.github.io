@@ -50,9 +50,21 @@ jobs:
         id: run_citation_update
         shell: bash
         run: |
-          echo "🚀 Running citation update script (single attempt)..."
+          set -o pipefail
+          echo "🚀 Running citation update script..."
           start_time=$(date)
-          timeout --signal=TERM --kill-after=30s 300 python bin/update_scholar_citations.py
+          set +e
+          timeout --signal=TERM --kill-after=30s 300 python -u bin/update_scholar_citations.py
+          status=$?
+          set -e
+          if [ "$status" -eq 124 ]; then
+            echo "::error::Citation update timed out after 300 seconds."
+            echo "❌ Citation update timed out after 300 seconds." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "$status" -ne 0 ]; then
+            echo "::error::Citation update failed with exit code $status."
+            echo "❌ Citation update failed with exit code $status." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          [ "$status" -eq 0 ]
           end_time=$(date)
           echo "✅ Citation update succeeded (started at $start_time, ended at $end_time)."
           echo "✅ Citation update succeeded." >> $GITHUB_STEP_SUMMARY
@@ -64,7 +76,7 @@ jobs:
         run: |
           echo "🚀 Running paper sync script..."
           start_time=$(date)
-          timeout --signal=TERM --kill-after=30s 300 python sync_papers.py
+          timeout --signal=TERM --kill-after=30s 300 python -u sync_papers.py
           end_time=$(date)
           echo "✅ Paper sync succeeded (started at $start_time, ended at $end_time)."
           echo "✅ Paper sync succeeded." >> $GITHUB_STEP_SUMMARY

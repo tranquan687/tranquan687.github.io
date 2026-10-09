@@ -34,12 +34,15 @@ def load_scholar_user_id() -> str:
 
 SCHOLAR_USER_ID: str = load_scholar_user_id()
 OUTPUT_FILE: str = "_data/citations.yml"
+REQUEST_TIMEOUT_SECONDS = 15
+MAX_REQUEST_RETRIES = 1
 
 
 def get_scholar_citations() -> None:
     """Fetch and update Google Scholar citation data."""
     print(f"Fetching citations for Google Scholar ID: {SCHOLAR_USER_ID}")
     today = datetime.now().strftime("%Y-%m-%d")
+    existing_data = None
 
     # Check if the output file was already updated today
     if os.path.exists(OUTPUT_FILE):
@@ -62,8 +65,10 @@ def get_scholar_citations() -> None:
 
     citation_data = {"metadata": {"last_updated": today}, "papers": {}}
 
-    scholarly.set_timeout(15)
-    scholarly.set_retries(3)
+    # Keep individual Scholar requests bounded so the workflow timeout remains
+    # a last-resort guard rather than the normal way to stop a blocked request.
+    scholarly.set_timeout(REQUEST_TIMEOUT_SECONDS)
+    scholarly.set_retries(MAX_REQUEST_RETRIES)
     try:
         author = scholarly.search_author_id(SCHOLAR_USER_ID)
         author_data = scholarly.fill(author)
