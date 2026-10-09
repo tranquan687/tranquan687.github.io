@@ -3,3 +3,4 @@ pyyaml
 rendercv[full]
 bibtexparser==1.4.3
 scholarly
+requests

@@ -2,8 +2,9 @@
 
 import os
 import sys
-from datetime import datetime
-from scholarly import scholarly
+
+from bin.scholar_source import fetch_publications
+
 
 def load_scholar_user_id() -> str:
     """Load the Google Scholar user ID from the configuration file."""
@@ -26,8 +27,6 @@ def load_scholar_user_id() -> str:
 
 SCHOLAR_USER_ID = load_scholar_user_id()
 BIB_FILE = "_bibliography/papers.bib"
-REQUEST_TIMEOUT_SECONDS = 15
-MAX_REQUEST_RETRIES = 1
 
 def get_existing_titles():
     """Get set of existing paper titles from bib file."""
@@ -46,18 +45,14 @@ def get_existing_titles():
     return titles
 
 def generate_bibtex(pub):
-    """Generate BibTeX entry from pub data."""
-    bib = pub.get('bib', {})
-    title = bib.get('title', 'Unknown Title')
-    authors = bib.get('author', 'Unknown Author')
-    year = bib.get('pub_year', 'Unknown Year')
-    journal = bib.get('journal', '')
-    volume = bib.get('volume', '')
-    pages = bib.get('pages', '')
-    doi = pub.get('pub_url', '')  # Scholarly may have doi
+    """Generate BibTeX entry from publication data."""
+    title = pub['title']
+    authors = pub['authors'] or 'Unknown Author'
+    year = pub['year']
+    journal = pub['venue']
 
     # Create a simple bib key
-    first_author = authors.split()[0].lower() if authors else 'unknown'
+    first_author = authors.split()[0].lower().strip(',') if authors else 'unknown'
     bib_key = f"{first_author}{year}"
 
     entry = f"@article{{{bib_key},\n"
@@ -66,12 +61,6 @@ def generate_bibtex(pub):
     entry += f"  year={{{year}}},\n"
     if journal:
         entry += f"  journal={{{journal}}},\n"
-    if volume:
-        entry += f"  volume={{{volume}}},\n"
-    if pages:
-        entry += f"  pages={{{pages}}},\n"
-    if doi:
-        entry += f"  doi={{{doi}}},\n"
     entry += "}\n\n"
 
     return entry
@@ -80,36 +69,27 @@ def sync_papers():
     """Sync papers from Google Scholar to bib file."""
     print(f"Fetching publications for Google Scholar ID: {SCHOLAR_USER_ID}")
 
-    scholarly.set_timeout(REQUEST_TIMEOUT_SECONDS)
-    scholarly.set_retries(MAX_REQUEST_RETRIES)
     existing_titles = get_existing_titles()
     print(f"Found {len(existing_titles)} existing papers in {BIB_FILE}")
 
     try:
-        author = scholarly.search_author_id(SCHOLAR_USER_ID)
-        author_data = scholarly.fill(author)
+        publications = fetch_publications(SCHOLAR_USER_ID)
     except Exception as e:
-        print(f"Error fetching author data: {e}")
+        print(f"Error fetching publications: {e}")
         sys.exit(1)
 
-    if "publications" not in author_data:
+    if not publications:
         print("No publications found.")
         return
 
     new_entries = []
-    for pub in author_data["publications"]:
-        try:
-            # Fill pub for more details
-            pub_filled = scholarly.fill(pub)
-            title = pub_filled.get('bib', {}).get('title', '').lower()
-            if title and title not in existing_titles:
-                bib_entry = generate_bibtex(pub_filled)
-                new_entries.append(bib_entry)
-                print(f"Adding new paper: {title}")
-            else:
-                print(f"Skipping existing paper: {title}")
-        except Exception as e:
-            print(f"Error processing publication: {e}")
+    for pub in publications:
+        title = pub['title'].lower()
+        if title and title not in existing_titles:
+            new_entries.append(generate_bibtex(pub))
+            print(f"Adding new paper: {title}")
+        else:
+            print(f"Skipping existing paper: {title}")
 
     if new_entries:
         with open(BIB_FILE, "a") as f:
