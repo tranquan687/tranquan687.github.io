@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-08-21'
+  last_updated: '2026-10-09'
 papers:
   NfwzqKoAAAAJ:2osOgNQ5qMEC:
     citations: 3
     title: 'Dragfly: Joint threat object detection and uav trajectory planning in hostile environments'
     year: '2024'
   NfwzqKoAAAAJ:IjCSPb-OGe4C:
-    citations: 0
+    citations: 1
     title: 'Saw-Monodetr: Shape-Aware Adaptive Weighted Transformer for Monocular 3d Object Detection'
     year: '2025'
   NfwzqKoAAAAJ:Tyk-4Ss8FVUC:
