@@ -7,6 +7,9 @@ on:
     - cron: "0 0 * * 5" # Friday
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update-citations:
     runs-on: ubuntu-latest
@@ -14,9 +17,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        # See CUSTOMIZE.md for details on how to set up PAT for triggering subsequent workflows
+        # Prefer PAT when available; otherwise use the default GitHub token.
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT || github.token }}
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -111,11 +115,18 @@ jobs:
           echo "🔧 Git configured."
 
       - name: Commit and push if changed
+        env:
+          GH_TOKEN: ${{ secrets.PAT || github.token }}
         run: |
           git add _data/citations.yml
           git add _bibliography/papers.bib
-          git diff --staged --quiet || (
-            echo "📤 Committing and pushing changes..."
-            git commit -m "Update Google Scholar citations and sync papers"
-            git push
-          )
+
+          if git diff --staged --quiet; then
+            echo "ℹ️ No citation updates to push."
+            exit 0
+          fi
+
+          echo "📤 Committing and pushing changes..."
+          git commit -m "Update Google Scholar citations and sync papers"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          git push origin HEAD:${{ github.ref_name }}
